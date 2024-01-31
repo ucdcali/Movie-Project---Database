@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Movie Database</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container">
+    <form action="/search" method="POST">
+      <input type="text" name="movieTitle" placeholder="Search...">
+      <button type="submit">Search</button>
+    </form>
+    <h2>Saved Movies</h2>
+    <h3>You've watch <%= totalMovies %> movies a total of <%= totalTimesWatched %> times!</h3> 
+    <ul>
+    <form action="/sort" method="POST">
+      <button type="submit">Sort</button>
+    </form>
+    <% savedMovies.forEach(movie => { %>
+      <li>
+        <%= movie.title %> (Watched: <%= movie.timesWatched %>)
+        <a href="watch/<%= movie._id %>">Watch</a>
+        <a href="delete/<%= movie._id %>">Delete</a>
+      </li>
+    <% }); %>
+    </ul>
+  </div>  
+</body>
+</html>
